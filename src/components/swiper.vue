@@ -1,9 +1,9 @@
 <template>
   <div class="swipe">
     <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="topStory in topStories" v:key="topStory.id">
-         <img :src="attachImageUrl(topStory.image)" :alt="topStory.title" />
-         <span class="top-story-title">{{topStory.title}}</span>
+      <mt-swipe-item v-for="topStory in topStories" :key="topStory.id">
+        <img class="top-story-img" :src="attachImageUrl(topStory.image)" :alt="topStory.title" />
+        <span class="top-story-title">{{topStory.title}}</span>
       </mt-swipe-item>
     </mt-swipe>
   </div>
@@ -25,7 +25,6 @@ export default {
         .then( res => {
           res = res.data;
           this.topStories = res. top_stories;
-          console.log(this.topStories)
         })
         .catch( error => {
           console.log(error)
@@ -44,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import '../assets/sass/components/swiper.sass'
 </style>
 
