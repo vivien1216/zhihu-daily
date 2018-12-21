@@ -11,16 +11,19 @@
       </div>
     </header>
     <swiper></swiper>
+    <news-list></news-list>
   </div>
 </template>
 
 <script>
 import Swiper from "../components/swiper"
+import newsList from '../components/newsList'
 
 export default {
   name: 'Index',
   components: {
-    Swiper
+    Swiper,
+    newsList
   }
 }
 </script>
