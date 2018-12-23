@@ -2,10 +2,10 @@
   <div class="news-list">
     <ul class="list" ref="newsList">
       <div class="title">今日新闻</div>
-      <li class="list-item" v-for="story in stories" :key="story.id">
+      <li class="list-item" v-for="story in stories" :key="story.id" @click="goDetail(story.id)">
         <span class="item-title">{{story.title}}</span>
         <div class="image-wrapper">
-          <img class="item-img" :src="attachImageUrl(story.images[0])" />
+          <img class="item-img" v-lazy.newsList="attachImageUrl(story.images[0])" />
           <div class="multipic" v-if="story.multipic">
             <i class="iconfont">&#xe611;</i>
             <span>多图</span>
@@ -18,6 +18,7 @@
 
 <script>
 import axios from 'axios'
+import router from '../router'
 import { Indicator } from 'mint-ui'
 
 export default {
@@ -43,11 +44,15 @@ export default {
         })
     },
     //修改图片链接
-	attachImageUrl: function(srcUrl) {
-	if (srcUrl !== undefined) {
-	  return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
-	}
-	},
+	  attachImageUrl: function(srcUrl) {
+  	  if (srcUrl !== undefined) {
+  	    return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
+  	  }
+	  },
+    //跳转详情页
+    goDetail (id) {
+      router.push({name: 'newsDetail', params: {id: id}})
+    } 
   },
 }
 </script>
