@@ -7,7 +7,9 @@
 	        <span class="page-home">首页</span>
 	      </div>
 	      <div class="header-right">
-	        <i class="iconfont icon-news">&#xe667;</i>
+          <router-link to="/news">
+	          <i class="iconfont icon-news">&#xe667;</i>
+          </router-link>
 	        <i class="iconfont icon-tab">&#xe6b9;</i>
 	      </div>
 	    </header>

@@ -34,6 +34,7 @@ export default {
   methods: {
     hideSidebar () {
       this.$emit('hideSidebar');
+      this.$router.push('/')
     }
   }
 }
