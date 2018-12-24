@@ -75,5 +75,4 @@ export default {
 
 <style lang="sass" scoped>
 @import '../assets/sass/pages/newsDetail.sass';
-@import "../../static/css/news_qa.auto.css";
 </style>
