@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '../pages/index.vue'
 import newsDetail from '../pages/newsDetail.vue'
 import News from '../pages/news.vue'
+import setPage from '../pages/setPage.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/news',
       name: 'News',
       component: News
+    },
+    {
+      path: '/setting',
+      name: 'setPage',
+      component: setPage
     }
   ]
 })

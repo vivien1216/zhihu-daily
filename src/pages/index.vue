@@ -10,7 +10,16 @@
           <router-link to="/news">
 	          <i class="iconfont icon-news">&#xe667;</i>
           </router-link>
-	        <i class="iconfont icon-tab">&#xe6b9;</i>
+          <div class="changMode">
+            <i class="iconfont icon-tab" @click="changeMode">&#xe6b9;</i>
+            <div class="settingMenu" v-show="showMode">
+              <ul>
+                <li v-show="dayColor" @click="changeBgColor">日间模式</li>
+                <li v-show="!dayColor" @click="changeBgColor">夜间模式</li>
+                <li @click="goSetting">设置选项</li>
+              </ul>
+            </div>
+          </div>
 	      </div>
 	    </header>
 	    <swiper></swiper>
@@ -35,7 +44,9 @@ export default {
   },
   data () {
     return {
-      showSideBar: false
+      showSideBar: false,
+      showMode: false,
+      dayColor: true
     }
   },
   created() {
@@ -59,6 +70,19 @@ export default {
     //下拉刷新数据
     loadTop() {
 	  this.$refs.loadmore.onTopLoaded();
+    },
+    //修改模式
+    changeMode () {
+      this.showMode = !this.showMode;
+    },
+    changeBgColor () {
+      this.dayColor = !this.dayColor;
+      this.showMode = false;
+    },
+    //前往设置页面
+    goSetting () {
+      this.$router.push('/setting');
+      this.showMode = false;
     }
   }
 }
