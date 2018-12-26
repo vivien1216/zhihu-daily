@@ -4,22 +4,7 @@
       <div class="leftarrow" @click="goHome">
         <i class="iconfont">&#xe601;</i>
       </div>
-      <ul class="menu-wrapper">
-        <li>
-          <i class="iconfont share">&#xe602;</i>
-        </li>
-        <li>
-          <i class="iconfont collect">&#xe605;</i>
-        </li>
-        <li class="message">
-          <i class="iconfont">&#xe6bf;</i>
-          <span>3</span>
-        </li>
-        <li class="good">
-          <i class="iconfont">&#xe600;</i>
-          <span>6</span>
-        </li>
-      </ul>
+      <news-menu></news-menu>
     </header>
     <div class="image">
       <img v-lazy="attachImageUrl(this.data.image)" :alt="this.data.title" />
@@ -31,7 +16,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import newsMenu from '../components/newsMenu'
 
 export default {
   name: 'newsDetail',
@@ -54,7 +40,10 @@ export default {
         })
         .catch(error => {
           console.log(error)
-        })
+        });
+
+
+       this.$store.dispatch('changeCurrentNewsId', id);
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {
@@ -68,12 +57,17 @@ export default {
     },
     goHome () {
       this.$router.push('/')
+    },
+    goToComment () {
+      this.$router.push('/comment/:' + this.$store.state.id);
     }
+  },
+  components: {
+    newsMenu
   }
 }
 </script>
 
 <style lang="sass" scoped>
 @import '../assets/sass/pages/newsDetail.sass';
-@import "../../static/css/news_qa.auto.css";
 </style>
