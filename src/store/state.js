@@ -6,4 +6,5 @@ export default {
   comments: 0, // 评论总数
   long_comments: 0, // 长评论总数
   short_comments: 0, // 短评论总数
+  popularity: 0, // 点赞总数
 }

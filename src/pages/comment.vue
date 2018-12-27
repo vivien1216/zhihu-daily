@@ -19,8 +19,14 @@ import router from '../router'
 import longComment from '../components/longComment'
 import shortComment from '../components/shortComment'
 
+
 export default {
   name: 'comment',
+  data () {
+    return {
+      showContent: false
+    }
+  },
   components: {
     longComment,
     shortComment
@@ -30,7 +36,7 @@ export default {
     backToDetail () {
       router.go(-1);
     }
-  }
+  },
 }
 </script>
 

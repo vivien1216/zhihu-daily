@@ -1,6 +1,6 @@
 <template>
-  <div class="longComment">
-    <div class="title">{{this.$store.state.comments}} 条长评</div>
+  <div class="longComment" v-show="!showContent">
+    <div class="title">{{this.$store.state.long_comments}} 条长评</div>
     <div class="content">
       <ul class="comment-list" ref="longCommentList">
         <li class="comment-item" v-for="comment in comments">
@@ -25,12 +25,15 @@
 import axios from 'axios';
 import moment from 'moment';
 import { Lazyload } from 'mint-ui';
+import Bus from '../assets/bus.js';
+
 
 export default {
   name: 'longComment',
   data () {
     return {
-      comments: []
+      comments: [],
+      showContent: false
     }
   },
   created () {
@@ -41,7 +44,6 @@ export default {
       axios.get('api/story/' + this.$store.state.id + '/long-comments') 
       .then( res => {
         this.comments = res.data.comments;
-        console.log(this.comments);
       })
       .catch( error => {
         console.log(error);
@@ -57,6 +59,12 @@ export default {
   changeTime: function(time) {
     return moment(time).format('MM-DD HH:mm');
   }
+ },
+ mounted () {
+   Bus.$on('change', (msg) => {
+     this.showContent = msg;
+     console.log(this.showContent)
+   })
  }
 }
 </script>

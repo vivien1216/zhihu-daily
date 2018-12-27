@@ -2,9 +2,10 @@
   <div class="short-comment">
     <div class="title">
       <span>{{this.$store.state.short_comments}} 条短评</span>
-      <i class="iconfont">&#xe694;</i>
+      <i class="iconfont" @click="toggleShowContent" v-show="!showContent">&#xe6a9;</i>
+      <i class="iconfont" @click="toggleShowContent" v-show="showContent">&#xe69e;</i>
     </div>
-    <div class="content">
+    <div class="content" v-show="showContent">
       <ul class="comment-list">
         <li class="comment-item" v-for="comment in comments">
           <img class="avatar" v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" />
@@ -28,12 +29,14 @@
 import axios from 'axios';
 import moment from 'moment';
 import { Lazyload } from 'mint-ui';
+import Bus from '../assets/bus.js';
 
 export default {
   name: 'shortComment',
   data () {
     return {
-      comments: []
+      comments: [],
+      showContent: false
     }
   },
   created () {
@@ -58,7 +61,11 @@ export default {
 	  // 转换时间戳
 	  changeTime: function(time) {
 	    return moment(time).format('MM-DD HH:mm');
-	  }
+	  },
+	 toggleShowContent () {
+	   this.showContent = !this.showContent;
+	   Bus.$emit('change',this.showContent);
+	 }
   }
 }
 </script>
