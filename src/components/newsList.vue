@@ -37,7 +37,6 @@ export default {
         .then( res => {
           res = res.data;
           this.stories = res.stories
-          console.log(this.stories)
         })
         .catch(error => {
           console.log(error)

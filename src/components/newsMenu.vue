@@ -1,7 +1,7 @@
 <template>
   <div class="news-menu">
     <ul class="menu-wrap">
-      <li>
+      <li @click="showShare">
         <i class="iconfont share">&#xe602;</i>
       </li>
       <li>
@@ -11,19 +11,32 @@
         <i class="iconfont">&#xe6bf;</i>
         <span>{{this.$store.state.comments}}</span>
       </li>
-      <li class="good">
-        <i class="iconfont">&#xe600;</i>
+      <li class="good" @click="thumbUp">
+        <i class="iconfont" :class="{'dianzan-active': isDianzan}">&#xe600;</i>
         <span>{{this.$store.state.popularity}}</span>
       </li> 
     </ul>
+    <mt-popup
+      v-model="popupVisible"
+      :visible="popupVisible"
+      popup-transition="popup-fade">
+      <share></share>
+    </mt-popup>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import share from './share'
 
 export default {
   name: 'newsMenu',
+  data () {
+    return {
+      isDianzan: false,
+      popupVisible: false
+    }
+  },
    created() {
     this.fetchStoryExtra();
   },
@@ -43,7 +56,23 @@ export default {
      // 查看评论界面
     showComment: function() {
       this.$router.push({ name: 'comment', params: { id: this.$store.state.id } });
-    } 
+    },
+    //点赞事件
+    thumbUp: function () {
+      if(!this.isDianzan) {
+        this.$store.state.popularity++;
+      } else {
+        this.$store.state.popularity--;
+      }
+      this.isDianzan = !this.isDianzan;
+    },
+    //分享界面
+    showShare: function () {
+      this.popupVisible = true;
+    }
+  },
+  components: {
+    share
   }
 }
 </script>
