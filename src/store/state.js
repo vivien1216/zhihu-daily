@@ -8,5 +8,7 @@ export default {
   long_comments: 0, // 长评论总数
   short_comments: 0, // 短评论总数
   popularity: 0, // 点赞总数
-  
+  collectIds: [], //收藏新闻数组Id
+  collectStories: [], //收藏新闻数组
+  isCollected: false, //是否收藏
 }

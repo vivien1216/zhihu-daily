@@ -8,7 +8,7 @@
 	          <span class="name">vivien</span>
 	        </div>
 	        <div class="menu-wrapper">
-	          <div class="collect">
+	          <div class="collect" @click="showCollect">
 	            <i class="iconfont">&#xe605;</i>
 	            <span>收藏</span>
 	          </div>
@@ -35,6 +35,9 @@ export default {
     hideSidebar () {
       this.$emit('hideSidebar');
       this.$router.push('/')
+    },
+    showCollect () {
+      this.$router.push('/collect');
     }
   }
 }

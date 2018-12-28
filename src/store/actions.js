@@ -21,4 +21,12 @@ export default {
   refreshNews: ({ commit }) => {
     commit(types.REFRESH_NEWS);
   },
+  //收藏新闻
+  toggleCollect: ({commit}) => {
+    commit(types.TOGGLE_COLLECT);
+  },
+  //判断收藏状态
+  judgeCollectState: ({commit}) => {
+    commit(types.JUDEG_COLLECT_STATE);
+  }
 }

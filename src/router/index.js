@@ -5,6 +5,7 @@ import newsDetail from '../pages/newsDetail.vue'
 import News from '../pages/news.vue'
 import setPage from '../pages/setPage.vue'
 import comment from '../pages/comment.vue'
+import Collect from '../pages/collect.vue'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/comment/:id',
       name: 'comment',
       component: comment
+    },
+    {
+      path: '/collect',
+      name: 'Collect',
+      component: Collect
     }
   ]
 })

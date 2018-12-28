@@ -4,8 +4,8 @@
       <li @click="showShare">
         <i class="iconfont share">&#xe602;</i>
       </li>
-      <li>
-        <i class="iconfont collect">&#xe605;</i>
+      <li @click="toggleCollect">
+        <i class="iconfont collect" :class="{'collect-active': this.$store.state.isCollected}">&#xe605;</i>
       </li>
       <li class="message" @click="showComment">
         <i class="iconfont">&#xe6bf;</i>
@@ -39,6 +39,7 @@ export default {
   },
    created() {
     this.fetchStoryExtra();
+    this.$store.dispatch('judgeCollectState');
   },
   methods: {
     fetchStoryExtra () {
@@ -69,6 +70,10 @@ export default {
     //分享界面
     showShare: function () {
       this.popupVisible = true;
+    },
+    //收藏事件
+    toggleCollect: function () {
+      this.$store.dispatch('toggleCollect')
     }
   },
   components: {
