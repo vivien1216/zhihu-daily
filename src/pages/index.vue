@@ -69,6 +69,7 @@ export default {
     },
     //下拉刷新数据
     loadTop() {
+    this.$refs.newsList.$emit('refresh');
 	  this.$refs.loadmore.onTopLoaded();
     },
     //修改模式

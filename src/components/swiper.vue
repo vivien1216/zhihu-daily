@@ -1,7 +1,7 @@
 <template>
   <div class="swipe">
     <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="topStory in topStories" :key="topStory.id">
+      <mt-swipe-item v-for="topStory in topStories" :key="topStory.id" @click.native="viewDetail(topStory.id)" >
         <img class="top-story-img" :src="attachImageUrl(topStory.image)" :alt="topStory.title" />
         <span class="top-story-title">{{topStory.title}}</span>
       </mt-swipe-item>
@@ -11,7 +11,6 @@
 
 <script>
 import axios from 'axios'
-
 export default {
   name: 'Swiper',
   data () {
@@ -35,7 +34,11 @@ export default {
         if (srcUrl !== undefined) {
           return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
         }
-      }
+      },
+      //跳转详情页
+      viewDetail: function(id) {
+        this.$router.push({ name: 'newsDetail', params: { id: id } });
+      },
   },
   created () {
     this.getTopStories();
