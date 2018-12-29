@@ -3,7 +3,7 @@
     <header>
        <i class="iconfont" @click="backToDetail">&#xe601;</i>
       <span>{{this.$store.state.comments}}条评论</span>
-      <div class="right">
+      <div class="right" @click="goWriteComment">
         <i class="iconfont">&#xe610;</i>
       </div>
     </header>
@@ -35,6 +35,9 @@ export default {
     //返回文章详情
     backToDetail () {
       router.go(-1);
+    },
+    goWriteComment () {
+      router.push('/writeComment');
     }
   },
 }

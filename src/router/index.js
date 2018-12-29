@@ -6,6 +6,7 @@ import News from '../pages/news.vue'
 import setPage from '../pages/setPage.vue'
 import comment from '../pages/comment.vue'
 import Collect from '../pages/collect.vue'
+import writeComment from '../pages/writeComment.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/collect',
       name: 'Collect',
       component: Collect
+    },
+    {
+      path: '/writeComment',
+      name: 'writeComment',
+      component: writeComment
     }
   ]
 })

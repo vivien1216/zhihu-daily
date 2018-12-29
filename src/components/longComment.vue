@@ -63,7 +63,6 @@ export default {
  mounted () {
    Bus.$on('change', (msg) => {
      this.showContent = msg;
-     console.log(this.showContent)
    })
  }
 }
