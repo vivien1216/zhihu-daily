@@ -2,16 +2,19 @@
   <div class="short-comment">
     <div class="title">
       <span>{{this.$store.state.short_comments}} 条短评</span>
-      <i class="iconfont" @click="toggleShowContent" v-show="!showContent">&#xe6a9;</i>
+      <i class="iconfont" @click="toggleShowContent" v-show="!showContent">&#xe63c;</i>
       <i class="iconfont" @click="toggleShowContent" v-show="showContent">&#xe69e;</i>
     </div>
     <div class="content" v-show="showContent">
       <ul class="comment-list">
-        <li class="comment-item" v-for="comment in comments">
+        <li class="comment-item" v-for="comment in comments" :key="comment.id">
           <img class="avatar" v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" />
           <div class="comment-content">
             <span class="author">{{comment.author}}</span>
-            <i class="iconfont icon-dianzan">&#xe600;</i>
+             <div class="right" @click="thumbUp(comment.id)">
+                <i class="iconfont icon-dianzan" :class="{'active' : comment.id == index}">&#xe600;</i>
+                <span>{{comment.likes}}</span>
+              </div>
             <p class="text">{{comment.content}}</p>
             <p class="reply" v-if="comment.reply_to !== undefined">
               <span class="reply-author">//{{comment.reply_to.author}}</span>
@@ -36,7 +39,8 @@ export default {
   data () {
     return {
       comments: [],
-      showContent: false
+      showContent: false,
+      index: ''
     }
   },
   created () {
@@ -65,7 +69,15 @@ export default {
 	 toggleShowContent () {
 	   this.showContent = !this.showContent;
 	   Bus.$emit('change',this.showContent);
-	 }
+	 },
+    //点赞事件
+    thumbUp (id) {
+      if (this.index !== id) {
+        this.index = id;
+      } else {
+        this.index = '';
+      }
+    }
   }
 }
 </script>

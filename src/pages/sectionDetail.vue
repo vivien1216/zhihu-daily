@@ -35,7 +35,6 @@ export default {
       axios.get('api/section/' + id)
       .then(res => {
         this.data = res.data;
-        console.log(res.data);
       })
       .catch(error =>  {
         console.log(error);

@@ -4,7 +4,7 @@
       <i class="iconfont arrow-left" @click="goBack">&#xe601;</i>
       <span>写点评</span>
       <div class="right">
-        <i class="iconfont" @click="commit">&#xe603;</i>
+        <i class="iconfont" @click="commit">&#xe6df;</i>
       </div>
     </header>
     <div class="warning-text">

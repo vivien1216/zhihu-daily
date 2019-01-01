@@ -2,12 +2,15 @@
   <div class="longComment" v-show="!showContent">
     <div class="title">{{this.$store.state.long_comments}} 条长评</div>
     <div class="content">
-      <ul class="comment-list" ref="longCommentList">
-        <li class="comment-item" v-for="comment in comments">
+      <ul class="comment-list" ref="longCommentList" >
+        <li class="comment-item" v-for="comment in comments" :key="comment.id">
           <img class="avatar" v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" />
           <div class="comment-content">
             <span class="author">{{comment.author}}</span>
-            <i class="iconfont icon-dianzan">&#xe600;</i>
+            <div class="right" @click="thumbUp(comment.id)">
+              <i class="iconfont icon-dianzan" :class="{'active' : comment.id == index}">&#xe600;</i>
+              <span>{{comment.likes}}</span>
+            </div>
             <p class="text">{{comment.content}}</p>
             <p class="reply" v-if="comment.reply_to !== undefined">
               <span class="reply-author">//{{comment.reply_to.author}}</span>
@@ -33,7 +36,8 @@ export default {
   data () {
     return {
       comments: [],
-      showContent: false
+      showContent: false,
+      index: ''
     }
   },
   created () {
@@ -58,6 +62,14 @@ export default {
   // 转换时间戳
   changeTime: function(time) {
     return moment(time).format('MM-DD HH:mm');
+  },
+  //点赞事件
+  thumbUp (id) {
+    if (this.index !== id) {
+      this.index = id;
+    } else {
+      this.index = '';
+    }
   }
  },
  mounted () {
