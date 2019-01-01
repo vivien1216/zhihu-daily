@@ -18,11 +18,11 @@ module.exports = {
                 '^/api': '/api/4'
             }
         },
-        '/api7': {
+        '/api3': {
             target: 'http://news-at.zhihu.com',
             changeOrigin: true,
             pathRewrite: {
-                '^/api7': '/api/7'
+                '^/api3': '/api/3'
             }
         }
     },

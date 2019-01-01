@@ -1,7 +1,7 @@
 <template>
   <div class="newsDetail">
     <header>
-      <div class="leftarrow" @click="goHome">
+      <div class="leftarrow" @click="goBack">
         <i class="iconfont">&#xe601;</i>
       </div>
       <news-menu></news-menu>
@@ -12,6 +12,10 @@
       <span class="image-source">图片：{{this.data.image_source}}</span>
     </div>
     <div class="body-wrap" v-html="this.data.body"></div>
+    <div class="section" v-if="this.section" @click="goSectionNews(section.id)">
+      <img v-lazy="attachImageUrl(this.section.thumbnail)" />
+      <span>本文来自：{{this.section.name}} . 合集</span>
+    </div>
   </div>
 </template>
 
@@ -23,7 +27,8 @@ export default {
   name: 'newsDetail',
   data () {
     return {
-      data: {}
+      data: {},
+      section: [],
     }
   },
   created () {
@@ -37,6 +42,7 @@ export default {
         .then(res => {
           res.data.body = this.attachBodyContent(res.data.body);
           this.data = res.data;
+          this.section = res.data.section;
         })
         .catch(error => {
           console.log(error)
@@ -55,11 +61,16 @@ export default {
     attachBodyContent: function(body) {
       return body.replace(/src="http\w{0,1}:\/\//g, 'src="https://images.weserv.nl/?url=');
     },
-    goHome () {
-      this.$router.push('/')
+    goBack () {
+      this.$router.go(-1);
     },
     goToComment () {
       this.$router.push('/comment/:' + this.$store.state.id);
+    },
+    //前往指定id栏目新闻
+    goSectionNews (id) {
+       this.$router.push({name: 'sectionDetail', params: {id: id} });
+       this.$store.dispatch('changeSectionNewsId', id);
     }
   },
   components: {

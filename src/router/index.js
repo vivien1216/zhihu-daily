@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '../pages/index.vue'
-import newsDetail from '../pages/newsDetail.vue'
-import News from '../pages/news.vue'
-import setPage from '../pages/setPage.vue'
-import comment from '../pages/comment.vue'
-import Collect from '../pages/collect.vue'
-import writeComment from '../pages/writeComment.vue'
+import Index from '../pages/index'
+import newsDetail from '../pages/newsDetail'
+import News from '../pages/news'
+import setPage from '../pages/setPage'
+import comment from '../pages/comment'
+import Collect from '../pages/collect'
+import writeComment from '../pages/writeComment'
+import sectionDetail from '../pages/sectionDetail'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/writeComment',
       name: 'writeComment',
       component: writeComment
+    },
+    {
+      path: '/sectionDetail/:id',
+      name: 'sectionDetail',
+      component: sectionDetail
     }
   ]
 })

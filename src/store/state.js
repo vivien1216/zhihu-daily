@@ -11,4 +11,6 @@ export default {
   collectIds: [], //收藏新闻数组Id
   collectStories: [], //收藏新闻数组
   isCollected: false, //是否收藏
+  currentSectionId: '', //栏目id数组
+  setionStories: [], //栏目新闻数组
 }

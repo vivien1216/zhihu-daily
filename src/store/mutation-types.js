@@ -4,4 +4,4 @@ export const CHANGE_LOAD_STATE = 'CHANGE_LOAD_STATE'; // 刷新首页新闻内�
 export const CHANGE_CURRENT_NEWS_ID = "CHANGE_CURRENT_NEWS_ID";//修改当前详情页面的id
 export const TOGGLE_COLLECT = "TOGGLE_COLLECT"; //收藏新闻
 export const JUDEG_COLLECT_STATE = "JUDEG_COLLECT_STATE"; //判断收藏状态
-
+export const CHANGE_SECTION_NEWS_ID = "CHANGE_SECTION_NEWS_ID"//修改当前栏目的id

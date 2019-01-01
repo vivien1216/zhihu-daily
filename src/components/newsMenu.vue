@@ -73,7 +73,7 @@ export default {
     },
     //收藏事件
     toggleCollect: function () {
-      this.$store.dispatch('toggleCollect')
+      this.$store.dispatch('toggleCollect');
     }
   },
   components: {

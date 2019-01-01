@@ -28,5 +28,9 @@ export default {
   //判断收藏状态
   judgeCollectState: ({commit}) => {
     commit(types.JUDEG_COLLECT_STATE);
+  },
+  //修改当前栏目的id
+  changeSectionNewsId: ({commit}, id) => {
+    commit(types.CHANGE_SECTION_NEWS_ID, id);
   }
 }

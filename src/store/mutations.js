@@ -47,5 +47,9 @@ export default {
     }else {
       state.isCollected = true;
     }
+  },
+  //修改当前栏目的id
+  [types.CHANGE_SECTION_NEWS_ID] (state, id) {
+    state.currentSectionId = id;
   }
 }
