@@ -1,7 +1,7 @@
 <template>
   <div class="myInfo">
     <header>
-      <i class="iconfont">&#xe601;</i>
+      <i class="iconfont" @click="goBack">&#xe601;</i>
       <span>个人主页</span>
       <div class="right">
         <i class="iconfont">&#xe610;</i>
@@ -27,7 +27,12 @@
 
 <script>
 export default {
-	name: 'myInfo'
+	name: 'myInfo',
+  methods: {
+    goBack () {
+      this.$router.go(-1);
+    }
+  }
 }
 </script>
 

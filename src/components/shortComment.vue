@@ -11,7 +11,7 @@
           <img class="avatar" v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" />
           <div class="comment-content">
             <span class="author">{{comment.author}}</span>
-             <div class="right" @click="thumbUp(comment.id)">
+             <div class="right" @click="thumbUp(comment,$event)">
                 <i class="iconfont icon-dianzan" :class="{'active' : comment.id == index}">&#xe600;</i>
                 <span>{{comment.likes}}</span>
               </div>
@@ -71,11 +71,13 @@ export default {
 	   Bus.$emit('change',this.showContent);
 	 },
     //点赞事件
-    thumbUp (id) {
-      if (this.index !== id) {
-        this.index = id;
+    thumbUp (item,e) {
+      if (this.index !== item.id) {
+        this.index = item.id;
+        item.likes++;
       } else {
         this.index = '';
+        item.likes--;
       }
     }
   }

@@ -2,12 +2,16 @@
   <div class="longComment" v-show="!showContent">
     <div class="title">{{this.$store.state.long_comments}} 条长评</div>
     <div class="content">
-      <ul class="comment-list" ref="longCommentList" >
-        <li class="comment-item" v-for="comment in comments" :key="comment.id">
+      <div class="sofa" v-show="!this.comments.length">
+         <i class="iconfont">&#xe61e;</i>
+         <p>深度长评虚位以待</p>
+      </div>
+      <ul class="comment-list" ref="longCommentList">
+        <li class="comment-item" v-for="(comment,idx) in comments" :key="idx">
           <img class="avatar" v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" />
           <div class="comment-content">
             <span class="author">{{comment.author}}</span>
-            <div class="right" @click="thumbUp(comment.id)">
+            <div class="right" @click="thumbUp(comment,$event)">
               <i class="iconfont icon-dianzan" :class="{'active' : comment.id == index}">&#xe600;</i>
               <span>{{comment.likes}}</span>
             </div>
@@ -38,7 +42,7 @@ export default {
       comments: [],
       showContent: false,
       index: ''
-    }
+      }
   },
   created () {
     this.fetchData();
@@ -64,11 +68,13 @@ export default {
     return moment(time).format('MM-DD HH:mm');
   },
   //点赞事件
-  thumbUp (id) {
-    if (this.index !== id) {
-      this.index = id;
+  thumbUp (item,e) {
+    if (this.index !== item.id) {
+      this.index = item.id;
+      item.likes++;
     } else {
       this.index = '';
+      item.likes--;
     }
   }
  },
