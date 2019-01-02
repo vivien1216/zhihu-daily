@@ -30,10 +30,37 @@ vue + vue-router + axios + vuex + vue-cli + sass + mint-ui
 - [x] 查看个人主页
 - [x] 查看收藏新闻
 
+## 项目截图
+
+### 首页
+![index.gif](./screenshots/index.gif)
+
+### 新闻详情页
+![newsDetail.gif](./screenshots/newsDetail.gif)
+
+### 侧边栏
+![sidebar.gif](./screenshots/sidebar.gif)
+
+### 栏目新闻
+![section.gif](./screenshots/section.gif)
+
+### 个人中心
+![info.gif](./screenshots/info.gif)
+
+### 评论页面
+![comment.gif](./screenshots/comment.gif)
+
+### 收藏页面
+![collect.gif](./screenshots/collect.gif)
+
+## 总结
+目前暂时还有许多地方不是很完美，以后有时间有能力的时候再添加。由于有些图标找不到一模一样的，就用了相似的图标进行替换。
+
 ## Build Setup
 
 ``` bash
 # 克隆项目到本地
+
 git clone git@github.com:vivien1216/zhihu-daily.git
 
 # 切换项目所在文件
@@ -51,3 +78,8 @@ npm run build
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## 参考
+> 感谢[izzyleung](https://github.com/izzyleung) 整理的 [知乎日报API分析](https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90)
+
+> [使用vue完成知乎日报web版](http://www.yatessss.com/2016/07/08/%E4%BD%BF%E7%94%A8vue%E5%AE%8C%E6%88%90%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5web%E7%89%88.html) By [yatessss](https://github.com/yatessss) 
