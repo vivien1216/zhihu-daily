@@ -23,7 +23,7 @@
         <span>有道云笔记</span>
       </li>
        <li class="share-item">
-        <i class="iconfont icon-QQ">&#xe652;</i>
+        <i class="iconfont icon-QQ">&#xe612;</i>
         <span>QQ</span>
       </li>
       <li class="share-item">

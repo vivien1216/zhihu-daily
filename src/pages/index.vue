@@ -25,7 +25,7 @@
 	    <swiper></swiper>
 	    <news-list></news-list>
 	</mt-loadmore>
-    <sidebar v-show="showSideBar" v-on:hideSidebar="toggleSidebar"></sidebar>
+    <sidebar v-if="showSideBar" v-on:hideSidebar="toggleSidebar"></sidebar>
   </div>
 </template>
 
@@ -53,18 +53,20 @@ export default {
     this.showSideBar = false;
   },
   methods: {
-    //切换侧边栏显示状态
-    toggleSidebar () {
-      //侧边栏显示时底部列表不能滚动
+    // 切换侧边栏显示状态
+    toggleSidebar() {
+      // 侧边栏显示时设置底部列表不能滑动
       let scrollTop;
-      if(!this.showSidebar) {  //禁止滑动
+      
+      if (!this.showSideBar) { // 禁止滑动
         scrollTop = document.scrollingElement.scrollTop;
         document.body.style.position = 'fixed';
         document.body.style.top = -scrollTop + 'px';
-      }else {  //取消禁止滑动
+      } else {    // 取消滑动限制
         document.body.style.position = '';
         document.scrollingElement.scrollTop = scrollTop;
       }
+
       this.showSideBar = !this.showSideBar;
     },
     //下拉刷新数据
