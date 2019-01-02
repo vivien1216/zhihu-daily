@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="sidebar">
 	      <div class="top">
-	        <div class="info">
+	        <div class="info" @click="goMyInfo">
 	          <img class="avatar" src="../assets/images/avatar.jpg" />
 	          <span class="name">vivien</span>
 	        </div>
@@ -38,6 +38,9 @@ export default {
     },
     showCollect () {
       this.$router.push('/collect');
+    },
+    goMyInfo () {
+      this.$router.push('/myInfo')
     }
   }
 }

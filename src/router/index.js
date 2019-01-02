@@ -8,6 +8,7 @@ import comment from '../pages/comment'
 import Collect from '../pages/collect'
 import writeComment from '../pages/writeComment'
 import sectionDetail from '../pages/sectionDetail'
+import myInfo from '../pages/myInfo'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/sectionDetail/:id',
       name: 'sectionDetail',
       component: sectionDetail
+    },
+    {
+      path: '/myInfo',
+      name: 'myInfo',
+      component: myInfo
     }
   ]
 })
